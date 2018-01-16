@@ -86,3 +86,37 @@ list.sort() --- 对列表进行永久性排序，list.sort(reverse=True)反向�
 在if语句中将列表名用在条件表达式中，Python将在列表至少包含一个元素时返回True，否则返回False.
 
 ---
+
+## 06 第6章 字典
+### 6.1 一个简单字典
+字典是一系列键值对
+
+### 6.2 使用字典
+字典是动态结构，可以随时在其中添加键-值对。添加键-值对，可依次指定字典名、用方括号括起的键和相关联的值。
+del语句删除键-值对，必须指定字典名和要删除的键。
+
+## 6.3 遍历字典
+### 6.3.1 遍历所有的键-值对
+字典方法items()
+```
+for key, value in dircionary.items():
+```
+### 6.3.2 遍历字典中所有键
+字典方法keys()
+```
+for key in dictionary.keys():
+```
+### 6.3.3 按顺序遍历字典中的所有键
+要以特定的顺序返回元素，一种方法在for循环中对返回的键进行排序，如：
+```
+for key in sorted(dictionary.keys()):
+```
+### 6.3.4 遍历字典中的所有值
+字典方法values()
+```
+for value in dictionary.values():
+```
+为了剔除重复，可以使用集合(set)，集合类似一个列表，但是每个元素都是独一无二的。
+```
+for value in set(dictionary.values()):
+```
