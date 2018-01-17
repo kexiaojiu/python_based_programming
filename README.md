@@ -120,3 +120,20 @@ for value in dictionary.values():
 ```
 for value in set(dictionary.values()):
 ```
+
+## 6.4 嵌套
+### 6.4.1 字典列表
+在列表中嵌套字典
+```
+list = [dictionary1, dictionary2,dictionary3, dictionary n]
+```
+### 6.4.2 在字典中存储列表
+每当字典中需要将一个键关联到多个值时，都可以在字典中嵌套一个列表。
+### 6.4.3 在字典中存储字典
+```
+dictionary = {
+    key1: dictionary1,
+    key2: dictionary2,
+    key3: dictionary3,
+    }
+```
