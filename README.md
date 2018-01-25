@@ -137,3 +137,10 @@ dictionary = {
     key3: dictionary3,
     }
 ```
+
+---
+
+# 7  用户输入和while循环
+## 7.1 函数input()
+
+
