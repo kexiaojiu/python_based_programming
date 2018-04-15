@@ -143,4 +143,68 @@ dictionary = {
 ## 7.1 函数input()
 函数input()让程序暂停运行，等待用户输入一些文本。获取用户输入后，Python将其存储在一个变量中，以方便你使用。
 ## 7.2 while循环介绍
+* while()循环不断地运行，直到指定条件不满足为止
+* 在要求很多条件都满足才继续运行的程序中，可以定义一个变量，用于判断整个程序是否处于活动状态，这个变量被称为标志，充当了程序的交通信号灯
+## 7.3 使用while循环来处理列表和字典
+for循环可以变量列表，但是不应修改列表，否则姜导致python难以跟踪其中元素。要在遍历列表的同事对其进行修改，可以使用while循环。
+主要用于
+* 在列表之间移动元素
+```
+#!/usr/bin/env python3
+
+# Firstly, build a list for unconfirmed users and a list for confirmed users
+unconfirmed_users = ['alice0', 'brian', 'candace']
+confirmed_usres = []
+
+# Secondly, confirm every user in the list until there is no unconfirmed user
+# then move confirmed users to the list of confirmed users
+while unconfirmed_users:
+    current_user = unconfirmed_users.pop()
+    
+    print("verifying user: " + current_user.title())
+    confirmed_usres.append(current_user)
+
+# At last, print all confirmed users
+print("\nThe following users have been confirmed:")
+for confirmed_user in confirmed_usres:
+    print(confirmed_user.title())
+    
+
+```
+* 删除包含特定值的所有列表元素
+```#!/usr/bin/env python3
+
+pets = ['dog', 'cat', 'dog', 'goldfish', 'cat', 'rabbit', 'cat']
+print(pets)
+
+while 'cat' in pets:
+    pets.remove('cat')
+    
+print(pets) 
+```
+* 使用用户输入来填充字典
+
+```
+#!/usr/bin/env python3
+
+responses = {}
+
+polling_active = True
+
+while polling_active:
+    name = input("\nWhat is your name? ")
+    response = input("Whick mountain would you like to climb someday? ")
+    
+    responses[name] = response
+    
+    repeat = input("Would you like to let another person respond?(yes or no)")
+    if repeat == 'no':
+        polling_active = False
+        
+        
+print("\n --- Poll Results ---")
+for name, response in responses.items():
+    print(name.title() + " would like to climb " + response + ".")
+```
+
 
