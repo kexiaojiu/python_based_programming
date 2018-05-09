@@ -172,7 +172,8 @@ for confirmed_user in confirmed_usres:
 
 ```
 * 删除包含特定值的所有列表元素
-```#!/usr/bin/env python3
+```
+#!/usr/bin/env python3
 
 pets = ['dog', 'cat', 'dog', 'goldfish', 'cat', 'rabbit', 'cat']
 print(pets)
@@ -207,4 +208,53 @@ for name, response in responses.items():
     print(name.title() + " would like to climb " + response + ".")
 ```
 
+---
 
+# 8 函数
+## 8.1 定义函数
+函数后面所有的缩进构成了函数体。两个'''被用作文档字符串。
+
+## 8.2 传递实参
+### 8.2.1 位置实参
+调用函数时候，Python将函数调用中每个实参都关联到函数定义中的一个形参。因而，最简单的关联方式是基于实参的顺序。
+### 8.2.2 关键字实参
+关键字实参是传递给函数的名称-值对，调用顺序无关紧要。
+```
+#!/usr/bin/env python3
+
+def describe_pet(animal_type, pet_name):
+    '''show the information of animal'''
+    print("\nI have a " + animal_type + ".")
+    print("My " + animal_type + "'s name is " + pet_name)
+
+#~ describe_pet('hamster', 'harry')
+describe_pet(animal_type = 'hamster', pet_name ='harry')
+```
+### 8.2.3 默认值
+编写函数时，可以给每个形参指定默认值。
+在使用默认值时，在形参列表中必须先列出没有默认值的形参，再列出有默认值的形参。
+### 8.2.4 等效的函数调用
+可以混合使用位置实参、关键字实参和默认值。
+## 8.3 返回值
+* 在函数中，可以使用return语句将值返回到调用函数的代码行。
+* 为实参提供一个空字符串，这样让实参变为可选
+```
+#!/usr/bin/env python3
+
+def get_formatted_name(first_name, last_name, middle_name=''):
+    '''return formatted name'''
+    if middle_name:
+        full_name = first_name + ' ' + middle_name + '' + last_name
+    else:
+        full_name = first_name + ' ' + last_name
+    return full_name.title()
+    
+musician = get_formatted_name('jimi', 'hendrix')
+print(musician)
+```
+## 8.4  传递列表
+ * 将列表传递给函数后，函数就可对其进行修改。在函数中对这个列表所做的任何修改都是永久性的
+* 将列表副本传递给函数，可以使用切片[:]
+```
+function_name(list_name[:])
+```
