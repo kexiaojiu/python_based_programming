@@ -258,3 +258,39 @@ print(musician)
 ```
 function_name(list_name[:])
 ```
+
+## 8.5 传递任意数量的实参
+```
+#!/usr/bin/env python3
+
+def make_pizza(*toppings):
+    """print all toppings which customers had ordered"""
+    print(toppings)
+    
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+```
+### 8.5.1 结合使用位置实参和任意数量实参 
+如果让函数接受不同类型的实参，必须在函数定义中将任意数量实参的形参放在最后。Python最先匹配实参和关键字实参，再将余下的实参都收集到最后一个形参中。
+### 8.5.2 使用任意数量的关键字实参
+有时候，需要接受任意数量的实参，但不知道传递给函数的信息，这时可以将函数编写成能够接受任意数量的键值对---调用语句提供了多少就接受多少。
+```
+#!/usr/bin/env python3
+
+def build_profile(first, last, **user_info):
+    """create a dictionary inclding everything about the users"""
+    profile = {}
+    profile['first_name'] = first
+    profile['last_name'] = last
+    for key, value in user_info.items():
+        profile[key] = value
+    return profile
+    
+user_profile = build_profile('albert', 'einstein', 
+                                location = 'princeton',
+                                field='physics')
+
+print(user_profile)
+```
+
+## 8.6 将函数存储在模块中
