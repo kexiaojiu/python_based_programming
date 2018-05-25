@@ -294,3 +294,24 @@ print(user_profile)
 ```
 
 ## 8.6 将函数存储在模块中
+###8.6.1 导入整个模块
+使用import语句导入名为module_name.py的整个模块，就可以使用下面的语法来使用其中任何函数
+```
+module_name.function_name()
+```
+### 8.6.2 导入特定函数
+```
+from  module_name import function_name
+```
+### 8.6.3 使用as给函数指定别名
+```
+from  module_name import function_name as fn
+```
+### 8.6.4 使用as给模块指定别名
+```
+import module_name as mn
+```
+### 8.6.5导入模块中所有函数（不建议使用）
+```
+from module_name import *
+```
