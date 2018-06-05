@@ -399,3 +399,23 @@ with open('text_file/filename.txt') as file_object:
 readlines()从文件读取每一行，并将其存储在一个列表中
 ### 10.1.5 使用文件内容
 读取文本文件时候，Python将其中的所有内容都解读为字符串。如果读取的是数字，并要当数值使用，必须使用函数int()将其转换为整数或使用函数float()将其转换成浮点数。
+
+## 10.2 写入文件
+### 10.2.1 写入空文件
+```
+#!/usr/bin/env python3
+
+filename = 'programming.txt'
+
+with open(filename, 'w') as file_object:
+ file_object.write("I love programming.")
+```
+打开文件时候，可以指定读取模式（'r'）、写入模式('w')、附加模式('a')和读写模式('r+')，默认只读模式打开文件。
+Python只能把字符串写入文本文件中，要将数值数据存储在文本文件中，必须使用函数str()将其转换成字符串模式。
+### 10.2.2 写入多行
+write()不会在文本末尾添加换行符
+### 10.2.3 附加到文件
+```
+with open(file_name, 'a') as file_object:
+    ......
+```
