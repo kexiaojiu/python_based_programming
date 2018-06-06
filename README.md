@@ -419,3 +419,95 @@ write()不会在文本末尾添加换行符
 with open(file_name, 'a') as file_object:
     ......
 ```
+
+## 10.3 异常
+### 10.3.1 处理ZeroDivisionError异常---使用try-except模块
+```
+#!/usr/bin/env python3
+try:
+ print(5/0)
+except ZeroDivisionError:
+ print("You can't divide by zero!")
+```
+### 10.3.2 else代码块
+依赖try代码块成功执行的代码都应该放到else代码块中。
+### 10.3.3 分析文本
+http://www.gutenberg.org/提供了一系列不受版权限制的文学作品，可以用于文本分析。下面是计算一个文本中单词数量的程序。
+```
+#!/usr/bin/env python3
+
+def count_words(filename):
+ """count words in files"""
+ try:
+  with open(filename) as fo:
+   contents = fo.read()
+ except FileNotFoundError:
+  error_message = "Sorry, the file" + filename + " does not exits."
+  print(error_message)
+ else:
+  # count how many words in the file
+  words = contents.split()
+  num_words = len(words)
+  print("The file " + filename + " has about " + str(num_words) + 
+   " words")
+   
+filename = 'alice.txt'
+count_words(filename)
+```
+split()方法将以空格为分隔符将字符串分拆为多个部分。
+### 10.3.4 失败时一声不吭
+在except中使用pass，也起到占位的作用，提醒在程序某个地方什么都没做，并且以后也许可以做些什么。
+```
+#!/usr/bin/env python3
+
+def count_words(filename):
+ """count words in files"""
+ try:
+  with open(filename) as fo:
+   contents = fo.read()
+ except FileNotFoundError:
+  #~ error_message = "Sorry, the file" + filename + " does not exits."
+  pass
+  #~ print(error_message)
+  #~ with open('missing_files.txt', 'a') as missing_obj:
+   #missing_obj.write(filename + "\n")
+ else:
+  # count how many words in the file
+  words = contents.split()
+  num_words = len(words)
+  print("The file " + filename + " has about " + str(num_words) + 
+   " words")
+   
+#~ filename = 'alice.txt'
+#~ count_words(filename)
+
+filenames = ['alice.txt', 'sddhartrha.txt', 'guest_book.txt', 'missing_files.txt']
+for filename in filenames:
+ count_words(filename)
+```
+### 10.3.5 计算单词出现频率的程序
+```
+#!/usr/bin/env python3
+
+def count_word_in_filename(filename, word):
+ """count how many 'word' in filename"""
+ try:
+  with open(filename) as fo:
+   contents = fo.read()
+ except FileNotFoundError:
+  error_message = "Sorry, the file" + filename + " does not exits.\n"
+  print(error_message)
+  pass
+  #~ with open('missing_files.txt', 'a') as missing_obj:
+   #missing_obj.write(filename + "\n")
+ else:
+  num_word_in_filename = contents.lower().count(word)
+  print("The file " + filename + " has about " + 
+   str(num_word_in_filename) + " words '"+ word + "'.\n")
+   
+   
+filenames = ['alicea.txt', 'the_sign_of_four.txt', 'a_study_in_scarlet.txt', 'the.txt']
+word = 'the'
+for filename in filenames:
+ count_word_in_filename(filename, word)
+```
