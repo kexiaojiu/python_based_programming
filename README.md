@@ -511,3 +511,33 @@ word = 'the'
 for filename in filenames:
  count_word_in_filename(filename, word)
 ```
+
+## 10.4 存储用户
+### 10.4.1 json.dump()和json.load()
+* json.dump()接受两个实参：要存储的数据以及可用于存储数据的文件对象
+* json.load()接受一个实参：要读取数据的文件对象
+```
+#!/usr/bin/env python3 
+
+import json
+
+numbers = [2, 3, 5, 7, 11, 13]
+
+filename = 'number.json'
+
+with open(filename, 'w') as f_obj:
+ json.dump(numbers, f_obj)
+```
+
+```
+#!/usr/bin/env python3
+
+import json
+
+filename = 'number.json'
+
+with open(filename) as f_obj:
+ numbers = json.load(f_obj)
+	
+print(numbers) 
+```
