@@ -541,3 +541,25 @@ with open(filename) as f_obj:
 	
 print(numbers) 
 ```
+### 10.4.2 保存和读取用户生成的数据
+```
+#!/usr/bin/env python3
+import json
+
+# if there is username in the file, load it
+# else store it
+filename = 'username.json'
+
+try:
+    with open(filename) as f_obj:
+        username = json.load(f_obj)
+except FileNotFoundError:
+    username = input("What is your name?")
+    with open(filename, 'w') as f_obj:
+        json.dump(username, f_obj)
+        print("We'll remember you when you come back, " + username + "!")
+else:
+    print("Welcome back, " + username + "!")
+```
+### 10.4.3 重构
+将代码划分为一系列完成具体工作的函数
