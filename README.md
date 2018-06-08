@@ -575,5 +575,71 @@ else:
 要为函数编写测试用例，可先导入模块unittest以及要测试的函数，再创建一个继承unittest.TestCase类，并编写一系列方法对函数行为的不同方面进行测试。
 assertEqual(a,b)是断言方法，断言a==b，否则将出现测试不提供
 
-## 11.2 测试函数
+## 11.2 测试类
 ### 11.2.1 各类断言方法
+unittest Module中断言方法
+方法 | 用途
+--- |---
+assertEqual(a,b) | 核实a==b
+assertNotEqual(a,b) | 核实a!=b
+assertTrue(x) | 核实x为True
+asserFalse(x) | 核实x为False
+assertIn(item, list) | 核实item在list中
+assertNotIn(item,list) | 核实item不在list中
+### 11.2.2 一个要测试的类
+```
+#!/usr/bin/env python3
+
+class AnonymousSurvey:
+    """collect annonymous survey"""
+    
+    
+    def __init__(self, question):
+        self.question = question
+        self.responses = []
+                
+    def show_question(self):
+        print(self.question)
+        
+    def store_response(self, new_response):
+        self.responses.append(new_response)
+
+    def show_results(self):
+        print("Survey results: ")
+        for response in self.responses:
+            print('- ' + response)
+```
+### 11.2.3 测试类
+```
+#!/usr/bin/env python3
+
+import unittest
+from survey import AnonymousSurvey
+
+class TestAnonymousCase(unittest.TestCase):
+    def test_store_single_responese(self):
+        question = "What language did you first learn to speak?"
+        my_survey = AnonymousSurvey(question)
+        my_survey.store_response('English')
+        
+        self.assertIn('English', my_survey.responses)
+        
+    def test_store_three_responese(self):
+        question = "What language did you first learn to speak?"
+        my_survey = AnonymousSurvey(question)
+        responses = ['English', 'Spanish', 'Mandarin']
+        for response in responses:
+            my_survey.store_response(response)
+        
+        for response in responses:
+            self.assertIn(response, my_survey.responses)
+            
+
+unittest.main()
+```
+### 10.2.4 方法setUp()
+TestCase类包含方法setUp()，让我们只需要创建这些对象一次，并在每个测试方法中使用他们 。一般，Python先运行setUp()，再运行各个以test_打头的方法。
+### 10.2.5 单元测试结果说明
+* 测试通过打印一个句点
+* 测试引发错误打印一个E
+* 测试导致断言失败打印一个F
