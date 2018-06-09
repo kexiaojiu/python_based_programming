@@ -643,3 +643,42 @@ TestCase类包含方法setUp()，让我们只需要创建这些对象一次，�
 * 测试通过打印一个句点
 * 测试引发错误打印一个E
 * 测试导致断言失败打印一个F
+
+# 12 第十二章 武装飞船
+## 12.1 项目规划
+项目启动之前，需要明确项目规划
+
+## 12.2 安装pip和Pygame
+```
+$ sudo apt install python3-pip
+$ pip3 install pygame
+```
+
+## 12.3 开始游戏项目
+首先，创建一个空的Pygame窗口。使用Pygame编写游戏的基本结构如下：
+```
+#!/usr/bin/env python3
+
+import sys
+import pygame
+
+def run_game():
+    # Initialize the game and create a game object
+    pygame.init()
+    screen = pygame.display.set_mode((1200, 800))
+    pygame.display.set_caption("Alien Invasion")
+    
+    # Begin the main loop
+    while True:
+        
+        # Monitoring mouse events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+                
+        # Make the recently painted screen visible
+        pygame.display.flip()
+
+
+run_game()
+```
