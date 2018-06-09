@@ -637,9 +637,9 @@ class TestAnonymousCase(unittest.TestCase):
 
 unittest.main()
 ```
-### 10.2.4 方法setUp()
+### 11.2.4 方法setUp()
 TestCase类包含方法setUp()，让我们只需要创建这些对象一次，并在每个测试方法中使用他们 。一般，Python先运行setUp()，再运行各个以test_打头的方法。
-### 10.2.5 单元测试结果说明
+### 11.2.5 单元测试结果说明
 * 测试通过打印一个句点
 * 测试引发错误打印一个E
 * 测试导致断言失败打印一个F
