@@ -682,3 +682,52 @@ def run_game():
 
 run_game()
 ```
+
+## 12.4 添加飞船图像
+* 使用Pygame的blit()方法可以绘制加载的图像
+* 使用get_rect获取相应surface属性rect
+* center\centerx或centery 游戏元素居中
+* top\bottom\left\right 游戏元素与边缘对齐
+* x,y 分别调整游戏元素的水平和垂直位置
+```
+#!/usr/bin/env python3
+
+import sys
+import pygame
+from settings import Settings
+from ship import Ship
+
+
+def run_game():
+    # Initialize the game and create a game object
+    ai_settings = Settings()
+    pygame.init()
+    screen = pygame.display.set_mode((ai_settings.screen_width, 
+        ai_settings.screen_height))
+    pygame.display.set_caption("Alien Invasion")
+    
+    # Set blackcolor
+    #~ bg_color = (230, 230, 230)
+    bg_color = ai_settings.bg_color
+     
+    # build a ship
+    ship = Ship(screen)
+        
+    # Begin the main loop
+    while True:
+        
+        # Monitoring mouse events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+        
+        screen.fill(ai_settings.bg_color)
+        ship.blitme()
+                
+        # Make the recently painted screen visible
+        pygame.display.flip()
+
+
+run_game()
+
+```
