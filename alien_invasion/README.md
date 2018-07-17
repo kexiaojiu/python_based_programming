@@ -19,8 +19,8 @@ $ pip3 install pygame
 ```
 
 # 3 文件说明
-* alien_invasion.py    运行该文件就可以玩《外星人入侵》，其他文件都会被直接或者间接导入其中。
-* ship.py                    飞船类
-* images                    存放所有图像
-* settings.py               存放所有参数
-* game_functions.py   事件管理函数
+* alien_invasion.py 运行该文件就可以玩《外星人入侵》，其他文件都会被直接或者间接导入其中。创建一些列游戏所需的对象，如存储在ai_setting中的设置，存储在screen中的主显示surface、一个飞船、子弹实例。
+* ship.py 飞船类，包含方法__init__()、管理飞船位置的方法update()以及在屏幕上绘制飞船的方法blitme()。
+* images 存放所有图像
+* settings.py 存放所有参数，只有方法__init__()，初始化控制游戏外观和飞船速度的属性
+* game_functions.py 事件管理函数。函数check_event()检测相关事件，如按键和松开；update_screen()函数，每次执行主循环时候都会重绘屏幕
