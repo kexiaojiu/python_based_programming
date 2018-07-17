@@ -24,6 +24,6 @@ def run_game():
     while True:
         game_functions.check_events(ship)
         ship.update()
-        game_functions.updata_screen(ai_settings, screen, ship)
+        game_functions.update_screen(ai_settings, screen, ship)
 
 run_game()

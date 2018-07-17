@@ -30,8 +30,8 @@ def check_events(ship):
         check_keyup_events(event, ship)        
             
 
-def updata_screen(ai_settings, screen, ship):
-    """updata screen  images and go to the new screen"""
+def update_screen(ai_settings, screen, ship):
+    """update screen  images and go to the new screen"""
     screen.fill(ai_settings.bg_color)
     ship.blitme()
             
