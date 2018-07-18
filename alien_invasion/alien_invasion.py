@@ -5,7 +5,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 import game_functions
-            
+from pygame.sprite import Group            
 
 def run_game():
     # Initialize the game and create a game object
@@ -19,11 +19,16 @@ def run_game():
      
     # build a ship
     ship = Ship(ai_settings, screen)
+    # bulid a group for storing the bullet
+    bullets = Group()
         
     # Begin the main loop
     while True:
-        game_functions.check_events(ship)
+        game_functions.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        game_functions.update_screen(ai_settings, screen, ship)
+        bullets.update()
+        game_functions.update_bullets(bullets)
+        
+        game_functions.update_screen(ai_settings, screen, ship, bullets)
 
 run_game()

@@ -11,3 +11,10 @@ class Settings():
         #~ self.bg_color = (0, 255, 255)
         # speed of a ship
         self.ship_speed_factor = 1.5
+        
+        # settings for bullets
+        self.bullet_speed_factor = 1
+        self.bullet_width = 3
+        self.bullet_height = 15
+        #~ self.bullet_color = 60, 60 ,60
+        self.bullets_allowed = 5
