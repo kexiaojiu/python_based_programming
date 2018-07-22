@@ -749,3 +749,33 @@ rect的属性和方法http://bbs.fishc.org/thread-62186-1-1.html
 
 ## 12.8 射击
 * 模块pygame.sprite中Sprite类，可将游戏中相关元素编组，进而同时操作编组中所有元素
+
+---
+
+# 13 第十三章 外星人
+## 13.1 回顾项目
+在给项目添加功能之前，需要回顾一下开发计划；此外，还应该审核既有代码。
+
+## 13.2 创建一个外星人
+创建飞船一样，先创建一个外星人，放在左上角
+
+## 13.3 创建一群外星人
+用sprite类创建一群外星人，首先确定屏幕可以容纳的外星人数目
+ aliens.draw(screen)对编组调用draw()时候，Pygame自动绘制编组的每个元素，绘制位置由元素的属性rect决定。
+创建第一行外星人
+```
+def create_fleet(ai_settings, screen, aliens):
+    """create a group of aliens"""
+    alien = Alien(ai_settings, screen)
+    alien_width = alien.rect.width
+    available_space_x = ai_settings.screen_width - 2 * alien_width
+    number_aliens_x = int(available_space_x / (2 * alien_width))
+    
+    # create aliens in the first line
+    for alien_number in range(number_aliens_x):
+        alien = Alien(ai_settings, screen)
+        alien.x = alien_width + 2 * alien_width * alien_number
+        alien.rect.x = alien.x
+        aliens.add(alien)  
+
+```
