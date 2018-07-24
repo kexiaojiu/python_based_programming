@@ -23,5 +23,5 @@ class Star(Sprite):
         
     
     def blitme(self):
-        """map the alien at the specified loaction"""
+        """map the star at the specified loaction"""
         self.screen.blit(self.image, self.rect)
