@@ -782,3 +782,6 @@ def create_fleet(ai_settings, screen, aliens):
 
 ## 13.4 让外星人移动
 移动规则：向屏幕右边移动，撞到屏幕边缘后下移一定距离，再沿相反的方向移动。
+
+## 13.5 射杀外星人
+sprite.groupcollide()检测两个编组的成员之间的碰撞
