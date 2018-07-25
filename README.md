@@ -785,3 +785,14 @@ def create_fleet(ai_settings, screen, aliens):
 
 ## 13.5 射杀外星人
 sprite.groupcollide()检测两个编组的成员之间的碰撞
+
+## 13.6 结束游戏
+### 13.6.1 检测外星人和飞船碰撞
+```
+    # detect collisions between aliens and spacecraft
+    if pygame.sprite.spritecollideany(ship, aliens):
+        print("Ship hit!!!")
+```
+### 13.6.2 响应外星人和飞船碰撞
+增加GameStats类
+### 13.6.3 有外星人到达屏幕底部

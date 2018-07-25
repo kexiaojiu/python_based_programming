@@ -26,3 +26,4 @@ $ pip3 install pygame
 * game_functions.py 事件管理函数。函数check_event()检测相关事件，如按键和松开；update_screen()函数，每次执行主循环时候都会重绘屏幕；fire_bullet()发射子弹；update_bullets()更新子弹，删除消失在屏幕的子弹；create_alien()创建外星人；create_fleet()创建外星人舰队。
 * bullet.py 子弹类，包含方法__init__()、update()子弹向上移动、draw_bullet()在屏幕绘制子弹。
 * alien.py 外星人类，包含方法__init__()、以及在屏幕上绘制外星人的方法blitme()。
+* game_stats.py 跟踪游戏统计信息。

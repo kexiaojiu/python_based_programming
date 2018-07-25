@@ -3,6 +3,7 @@ import sys
 import pygame
 from bullet import Bullet
 from alien import Alien
+from time import sleep
 
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
     if event.type == pygame.KEYDOWN:
@@ -89,11 +90,46 @@ def change_fleet_direction(ai_settings, aliens):
         alien.rect.y += ai_settings.fleet_drop_speed
 
 
-def update_aliens(ai_settings, aliens):
+def check_aliens_bottom(ai_settings, screen, ship, aliens, bullets, stats):
+    """check whether there are aliens at the bottom of the screen"""
+    screen_rect = screen.get_rect()
+    for alien in aliens.sprites():
+        if alien.rect.bottom >= screen_rect.bottom:
+            ship_hit(ai_settings, screen, ship, aliens, bullets, stats)
+            break
+
+
+def update_aliens(ai_settings, screen, ship, aliens, bullets, stats):
     """update aliens's locations"""
     check_fleet_edges(ai_settings, aliens)
     aliens.update()
     
+    # detect collisions between aliens and spacecraft
+    if pygame.sprite.spritecollideany(ship, aliens):
+        #~ print("Ship hit!!!")
+        ship_hit(ai_settings, screen, ship, aliens, bullets, stats)
+    #check whether there are aliens at the bottom of the screen
+    check_aliens_bottom(ai_settings, screen, ship, aliens, bullets, stats)
+        
+        
+def ship_hit(ai_settings, screen, ship, aliens, bullets, stats):
+    if stats.ship_left > 0:
+        stats.ship_left -= 1
+        
+        # clear aliens and bullets
+        aliens.empty()
+        bullets.empty()
+        
+        # create aliens and put the ship in the center of the screen
+        create_fleet(ai_settings, screen, aliens, ship)
+        ship.center_ship()
+        
+        #sleep 
+        sleep(0.5)
+    else:
+        stats.game_active = False
+    
+        
 
 def get_number_aliens_x(ai_settings, alien_width):
     available_space_x = ai_settings.screen_width - 2 * alien_width

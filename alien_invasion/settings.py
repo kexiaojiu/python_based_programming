@@ -9,8 +9,10 @@ class Settings():
         self.bg_color = (230,230, 230)
         """blue"""
         #~ self.bg_color = (0, 255, 255)
+        
         # speed of a ship
         self.ship_speed_factor = 1.5
+        self.ship_limit = 3
         
         # settings for bullets
         self.bullet_speed_factor = 3
@@ -21,7 +23,9 @@ class Settings():
         
         # settings for alien
         self.alien_speed_factor = 1
-        self.fleet_drop_speed = 10
+        self.fleet_drop_speed = 100
         #1 respects right, -1 respects left
         self.fleet_direction = 1
     
+
+
