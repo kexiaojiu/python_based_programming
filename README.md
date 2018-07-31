@@ -796,3 +796,25 @@ sprite.groupcollide()检测两个编组的成员之间的碰撞
 ### 13.6.2 响应外星人和飞船碰撞
 增加GameStats类
 ### 13.6.3 有外星人到达屏幕底部
+
+---
+# 14 第十四章 记分
+## 14.1 添加play按钮
+* 导入pygame.font模块，能够让Pygame将文本渲染到屏幕上。
+
+* 调用font.render()将msg中的文本转化为图像
+```
+self.font.render(msg, True, self.text_color, self.button_color)
+```
+* 获取鼠标位置的方法
+```
+mosue_x, mouse_y = pygame.mouse.get_pos()
+```
+* 检查鼠标单击位置是否在Play按钮的rect内，在里面返回True 
+```
+play_button.rect.collidepoint(mouse_x, mouse_y)
+```
+* 隐藏光标
+```
+pygame.mouse.set_visible(False)
+```

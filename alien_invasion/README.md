@@ -27,3 +27,4 @@ $ pip3 install pygame
 * bullet.py 子弹类，包含方法__init__()、update()子弹向上移动、draw_bullet()在屏幕绘制子弹。
 * alien.py 外星人类，包含方法__init__()、以及在屏幕上绘制外星人的方法blitme()。
 * game_stats.py 跟踪游戏统计信息。
+* button.py 按钮类，包含__init__()、prep_msg()将显示的字符串渲染为图像、draw_button()绘制按钮矩形。
