@@ -22,9 +22,10 @@ $ pip3 install pygame
 * alien_invasion.py 运行该文件就可以玩《外星人入侵》，其他文件都会被直接或者间接导入其中。创建一些列游戏所需的对象，如存储在ai_setting中的设置，存储在screen中的主显示surface、一个飞船、子弹实例。
 * ship.py 飞船类，包含方法__init__()、管理飞船位置的方法update()以及在屏幕上绘制飞船的方法blitme()。
 * images 存放所有图像。
-* settings.py 存放所有参数，只有方法__init__()，初始化控制游戏外观和飞船速度的属性。
+* settings.py 存放所有参数，方法__init__()初始化控制游戏外观和飞船速度的属性，initialize_dynamial_settings()初始化飞船速度、子弹速度、和外星人移动速度的设定值、increase_speed()按照比例speedup_scale提高飞船速度、子弹速度、和外星人移动速度的设定值。
 * game_functions.py 事件管理函数。函数check_event()检测相关事件，如按键和松开；update_screen()函数，每次执行主循环时候都会重绘屏幕；fire_bullet()发射子弹；update_bullets()更新子弹，删除消失在屏幕的子弹；create_alien()创建外星人；create_fleet()创建外星人舰队。
 * bullet.py 子弹类，包含方法__init__()、update()子弹向上移动、draw_bullet()在屏幕绘制子弹。
 * alien.py 外星人类，包含方法__init__()、以及在屏幕上绘制外星人的方法blitme()。
 * game_stats.py 跟踪游戏统计信息。
 * button.py 按钮类，包含__init__()、prep_msg()将显示的字符串渲染为图像、draw_button()绘制按钮矩形。
+* scoreboard.py 记分类，包含方法__init__()，显示当前得分、显示最高得分、等级和余下的飞船数目。

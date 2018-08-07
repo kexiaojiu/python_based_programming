@@ -818,3 +818,92 @@ play_button.rect.collidepoint(mouse_x, mouse_y)
 ```
 pygame.mouse.set_visible(False)
 ```
+
+## 14.2 提高等级
+initialize_dynamial_settings()初始化飞船速度、子弹速度、和外星人移动速度的设定值、increase_speed()按照比例speedup_scale提高飞船速度、子弹速度、和外星人移动速度的设定值。
+```
+#!/usr/bin/env python3
+
+class Settings():
+    """store all settings"""
+    
+    def __init__(self):
+        self.screen_width = 1200
+        self.screen_height = 800
+        self.bg_color = (230,230, 230)
+        """blue"""
+        #~ self.bg_color = (0, 255, 255)
+        
+        # speed of a ship
+        #~ self.ship_speed_factor = 1.5
+        self.ship_limit = 3
+        
+        # settings for bullets
+        #~ self.bullet_speed_factor = 3
+        self.bullet_width = 3
+        self.bullet_height = 15
+        #~ self.bullet_color = 60, 60 ,60
+        self.bullets_allowed = 5
+        
+        # settings for alien
+        #~ self.alien_speed_factor = 1
+        self.fleet_drop_speed = 10
+        #~ #1 respects right, -1 respects left
+        #~ self.fleet_direction = 1
+        
+        # speed up the game
+        self.speedup_scale = 1.2
+        self.initialize_dynamial_settings()
+        
+        
+    def initialize_dynamial_settings(self):
+        self.ship_speed_factor = 1.5
+        self.bullet_speed_factor = 3
+        self.alien_speed_factor = 1
+        #1 respects right, -1 respects left
+        self.fleet_direction = 1
+        
+        
+    def increase_speed(self):
+        self.ship_speed_factor *= self.speedup_scale
+        self.bullet_speed_factor *= self.speedup_scale
+        self.alien_speed_factor *= self.speedup_scale
+
+```
+## 14.3 记分
+* 新增记分类
+```
+#!/usr/bin/env python3
+
+import pygame.font
+
+class Scoreboard():
+    """score class"""
+    
+    def __init__(self, ai_settings, screen, stats):
+        self.screen = screen
+        self.screen_rect = screen.get_rect()
+        self.ai_settings = ai_settings
+        self.stats = stats
+        
+        self.text_color = (30, 30, 30)
+        self.font = pygame.font.SysFont(None, 48)
+        
+        self.prep_score()
+        
+    
+    def prep_score(self):
+        """make the score to be a picure"""
+        score_str = str(self.stats.score)
+        self.score_image = self.font.render(score_str, True, self.text_color,
+            self.ai_settings.bg_color)
+        
+        self.score_rect = self.score_image.get_rect()
+        self.score_rect.right = self.screen_rect.right - 20
+        self.score_rect.top = 20
+        
+        
+    def show_score(self):
+        """show score"""
+        self.screen.blit(self.score_image, self.score_rect)
+```

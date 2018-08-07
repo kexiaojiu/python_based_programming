@@ -47,6 +47,7 @@ def check_play_button(ai_settings, screen, ship, aliens, bullets, stats,
         play_button, mouse_x, mouse_y):
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if button_clicked and not stats.game_active:
+        ai_settings.initialize_dynamial_settings()
         # hide civis
         pygame.mouse.set_visible(False)
         
@@ -64,9 +65,12 @@ def check_play_button(ai_settings, screen, ship, aliens, bullets, stats,
 
     
 def update_screen(ai_settings, screen, ship, bullets, aliens, 
-        play_button, stats):
+        play_button, stats, scores):
     """update screen  images and go to the new screen"""
     screen.fill(ai_settings.bg_color)
+    # show the score
+    scores.show_score()
+    
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
@@ -99,6 +103,7 @@ def check_bullet_alien_collisions(ai_settings, screen, ship, bullets, aliens):
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     
     if len(aliens) == 0:
+        ai_settings.increase_speed()
         create_fleet(ai_settings, screen, aliens, ship)
 
 

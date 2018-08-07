@@ -7,7 +7,8 @@ from ship import Ship
 import game_functions
 from pygame.sprite import Group
 from game_stats import GameStats    
-from button import Button        
+from button import Button  
+from scoreboard import Scoreboard      
 
 def run_game():
     # Initialize the game and create a game object
@@ -18,7 +19,9 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
     
     # create a class for storing imformation
-    stats = GameStats(ai_settings) 
+    stats = GameStats(ai_settings)
+    # create a class for scrore
+    scores = Scoreboard(ai_settings, screen, stats) 
     # build a ship
     ship = Ship(ai_settings, screen)
     # bulid a group for storing the bullets
@@ -41,6 +44,7 @@ def run_game():
             game_functions.update_bullets(ai_settings, screen, ship, bullets, aliens)
             game_functions.update_aliens(ai_settings, screen, ship, aliens, bullets, stats)
         
-        game_functions.update_screen(ai_settings, screen, ship, bullets, aliens, play_button, stats)
+        game_functions.update_screen(ai_settings, screen, ship, bullets, 
+            aliens, play_button, stats, scores)
 
 run_game()
